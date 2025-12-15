@@ -58,7 +58,7 @@ class Livro extends ItemBiblioteca {
     print('ISBN: $isbn');
     print('Ano de publicação: $anoPubli');
     print('Cópias disponíveis: $quantCopias');
-    print('---');
+    print('-----');
   }
 }
 
@@ -139,8 +139,7 @@ void main() {
         print('Quantos dias o item ficou emprestado?');
         int dias = int.parse(stdin.readLineSync()!);
 
-        DateTime dataDevolucao =
-        DateTime.now().add(Duration(days: dias));
+        DateTime dataDevolucao = DateTime.now().add(Duration(days: dias));
 
         for (var item in acervo) {
           if (item.titulo == titulo) {
