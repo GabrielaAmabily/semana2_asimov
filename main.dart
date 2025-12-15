@@ -1,21 +1,34 @@
-//classe base
-class Item {
+// Classe base
+class ItemBiblioteca {
   String titulo;
-  double anoPubli;
-  double quantCopias;
+  int anoPubli;
+  int quantCopias;
   double precoBase;
   double multaDia;
+
+  ItemBiblioteca(
+    this.titulo,
+    this.anoPubli,
+    this.quantCopias,
+    this.precoBase,
+    this.multaDia,
+  );
 }
 
-//classe livro, puxa de item
-class Livro extends Item {
+class Livro extends ItemBiblioteca {
   String autor;
-  double isbn;
+  String isbn;
+
+  Livro(String titulo, int anoPubli, int quantCopias, this.autor, this.isbn)
+    : super(titulo, anoPubli, quantCopias, 15.0, 2.5);
 }
 
-class Revista extends Item {
-  double edicao;
-  String mes; 
+class Revista extends ItemBiblioteca {
+  int edicao;
+  String mes;
+
+  Revista(String titulo, int anoPubli, int quantCopias, this.edicao, this.mes)
+    : super(titulo, anoPubli, quantCopias, 5.0, 1.0);
 }
 
 void main() {
