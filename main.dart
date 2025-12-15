@@ -32,9 +32,12 @@ class Revista extends ItemBiblioteca {
 }
 
 void main() {
-  print("Olá, Seta! Dart está funcionando :)");
-
-  int a = 10;
-  int b = 15;
-  print(a + b);
+  List<ItemBiblioteca> acervo = [
+    Livro('O Hobbit', 1937, 3, 'J.R.R. Tolkien', '123456'),
+    Livro('1984', 1949, 2, 'George Orwell', '654321'),
+    Livro('Dom Casmurro', 1899, 1, 'Machado de Assis', '987654'),
+    Revista('Superinteressante', 2024, 5, 420, 'Janeiro'),
+    Revista('Veja', 2024, 4, 1050, 'Fevereiro'),
+    Revista('Galileu', 2024, 2, 380, 'Março'),
+  ];
 }
