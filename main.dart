@@ -1,3 +1,5 @@
+import 'dart:io';
+
 // Classe base
 class ItemBiblioteca {
   String titulo;
@@ -103,18 +105,57 @@ void main() {
     Revista('Galileu', 2024, 2, 380, 'Março'),
   ];
 
-  listarEstoque(acervo);
-  
-  // Testando empréstimo
-  /*ItemBiblioteca livro1 = acervo[0];
+   int opcao = 0;
 
-  livro1.emprestar();
-  livro1.emprestar();
-  livro1.emprestar(); // aqui deve dizer que não está disponível
+  while (opcao != 4) {
+    print('\n=== MENU BIBLIOTECA ===');
+    print('1 - Listar acervo');
+    print('2 - Emprestar item');
+    print('3 - Devolver item');
+    print('4 - Sair');
 
-  // Simulando devolução após 10 dias
-  DateTime dataDevolucao = DateTime.now().add(Duration(days: 10));
-  double valor = livro1.devolver(dataDevolucao);
+    opcao = int.parse(stdin.readLineSync()!);
 
-  print('Valor a pagar: R\$ ${valor.toStringAsFixed(2)}');*/
+    switch (opcao) {
+      case 1:
+        listarEstoque(acervo);
+        break;
+
+      case 2:
+        print('Digite o título do item:');
+        String titulo = stdin.readLineSync()!;
+
+        for (var item in acervo) {
+          if (item.titulo == titulo) {
+            item.emprestar();
+          }
+        }
+        break;
+
+      case 3:
+        print('Digite o título do item:');
+        String titulo = stdin.readLineSync()!;
+
+        print('Quantos dias o item ficou emprestado?');
+        int dias = int.parse(stdin.readLineSync()!);
+
+        DateTime dataDevolucao =
+        DateTime.now().add(Duration(days: dias));
+
+        for (var item in acervo) {
+          if (item.titulo == titulo) {
+            double valor = item.devolver(dataDevolucao);
+            print('Valor a pagar: R\$ ${valor.toStringAsFixed(2)}');
+          }
+        }
+        break;
+
+      case 4:
+        print('Encerrando sistema...');
+        break;
+
+      default:
+        print('Opção inválida.');
+    }
+  }
 }
